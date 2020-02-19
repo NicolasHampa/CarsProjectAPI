@@ -33,13 +33,21 @@ class CarController{
     async index(req, res) {
         const { id } = req.params;
         const car = await Car.findById(id);
-
-        res.setHeader("Access-Control-Allow-Origin", "*");
         return res.json(car);
     }
 
     async update(req, res) {
+        const { _id, vehicle, brand, year, price, description } = req.body;
 
+        await Car.updateOne({ _id }, {
+            vehicle,
+            brand,
+            year,
+            price,
+            description
+        });
+
+        return res.status(200).json({ status: 200 });
     }
 
     async destroy(req, res) {

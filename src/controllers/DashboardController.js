@@ -4,8 +4,6 @@ class CarController{
 
     async index(req, res) {
         const cars = await Car.find();
-
-        res.setHeader("Access-Control-Allow-Origin", "*");
         return res.json({ cars });
     }
 
