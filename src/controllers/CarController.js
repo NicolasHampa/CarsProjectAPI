@@ -17,14 +17,14 @@ class CarController{
     }
 
     async store(req, res) {
-        const { username, password, firstName, lastName, age } = req.body;
+        const { vehicle, brand, year, price, description } = req.body;
 
         let car = await Car.create({
-            vehicle: username,
-            brand: password,
-            year: firstName,
-            price: lastName,
-            description: age
+            vehicle,
+            brand,
+            year,
+            price,
+            description
         });
 
         return res.json(car);
